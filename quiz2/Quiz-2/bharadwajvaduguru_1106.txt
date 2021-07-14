@@ -1,0 +1,39 @@
+Name: Bharadwaj Vaduguru
+Studnet id: 1001761106
+
+1)Finding the number of quakes which are less than 200 KM.
+
+def  no_of_quake():
+ 	form=formfordata()
+ 	distance=request.form['distance_given']
+ 	create_link=sqlite3.connect('data_earth_quakes.db')
+ 	table_with_data=create_link.cursor()
+ 	table_with_data.execute("SELECT latitude, longitude  from q")  #selecting the lattitudes, longitude. So that, distance is calculated
+ 	attributes = table_with_data.fetchall()
+	value=float(0)
+ 	for att in attributes:
+		raw_distance = sin(lati - radians(att[0][0]) / 2)**2 + cos(lati) * cos(radians(att[0][0])) * sin(longi - radians(att[0][1]) / 2)**2
+		actual_distance = 2 * atan2(sqrt(raw_distance), sqrt(1 - raw_distance))
+		if actual_distance <200:
+			value+=1
+
+ 	return render_template('display_data.html',value=count,title='')
+
+2)earth quake with higher magnitude is to be printed.
+def largest_earth_quake():	
+	form=formfordata()
+ 	distance=request.form['distance_given']
+ 	create_link=sqlite3.connect('data_earth_quakes.db')
+ 	table_with_data=create_link.cursor()
+ 	table_with_data.execute("SELECT latitude, longitude, max(time)  from q order by mag Desc limit 1 ")  #selecting the latitude and longitude so that it can be sorted by maximum magnitude with time
+ 	attributes = table_with_data.fetchall()
+	return render_template('magnitude_quake.html',attributes=attributes)		
+
+3)quake with magnitude >6
+def mag_quake():	
+	form=formfordata()
+ 	create_link=sqlite3.connect('data_earth_quakes.db')
+ 	table_with_data=create_link.cursor()
+ 	table_with_data.execute("SELECT * where (mag>6)  from q order by time Desc limit 1 ")  #selecting all the rows that has magnitude >6 with time in escending order
+ 	atu = table_with_data.fetchall()
+	return render_template('select_by_magnitude.html',attributes=atu)	

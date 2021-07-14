@@ -1,0 +1,32 @@
+
+<p>count:{{rows[0][0]}}</p>
+<h4>The lowest values is displayed below:</h4>
+{% block app_content %}
+<table border="1">
+<tr>
+<th>Location</th>
+<th>id</th>
+</tr>
+{% for row in rows2 %}
+        <tr>
+        <td>{{row[11]}}</td>
+        <td>{{row[10]}}</td>
+        </tr>
+         {% endfor %}
+    </table>
+
+<p></p>
+<h4>The highest values is displayed below:</h4>
+<table border="1">
+<tr>
+<th>Location</th>
+<th>id</th>
+</tr>
+{% for row in rows1 %}
+        <tr>
+        <td>{{row[11]}}</td>
+        <td>{{row[10]}}</td>
+        </tr>
+         {% endfor %}
+    </table>
+{% endblock %} 

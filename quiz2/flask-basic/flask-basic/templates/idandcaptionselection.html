@@ -1,0 +1,19 @@
+{% for item in row %}
+{% if item == 'not available' %}
+<h2>Neither Picture nor Caption is available for this entry</h2>
+<!-- {% elif item[0][0] == 'No image available' %}
+<h2>No picture available</h2>
+<td>{{row[0][1]}}</td>
+{% elif item[0][1] == 'No Caption'%}
+<tr>
+    <td><img src="static/{{item[0]}}"></td>
+</tr>
+<h2>No Caption available</h2> -->
+{% else %}
+<tr>
+    <td><img src="static/{{item[0]}}"></td>
+</tr><br/>
+<td>{{row[0][0]}}</td><br/>
+<td>{{row[0][1]}}</td><br/>
+{% endif %}
+{% endfor %}

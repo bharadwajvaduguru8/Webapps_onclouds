@@ -1,0 +1,41 @@
+<!--<h4>{{rows}}</h4>
+<h4>{{rows[1]}}</h4>
+<h4>{{rows[2]}}</h4>
+<h4>{{rows[3]}}</h4> -->
+
+{% block app_content %}
+<table border="1">
+<tr>
+<th>time</th>
+<th>lattitude</th>
+<th>longitude</th>
+<th>Depth</th>
+<th>Mag</th>
+<th>Mag type</th>
+<th>nst</th>
+<th>gap</th>
+<th>Dmin</th>
+<th>rms</th>
+<th>net</th>
+<th>Id</th>
+</tr>
+{% for row in rows %}
+        <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
+        <td>{{row[6]}}</td>
+        <td>{{row[7]}}</td>
+        <td>{{row[8]}}</td>
+        <td>{{row[9]}}</td>
+        <td>{{row[10]}}</td>
+        <td>{{row[11]}}</td>
+        </tr>
+         {% endfor %}
+    </table>
+
+
+{% endblock %} 

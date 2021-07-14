@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <title>{% block title %}{% endblock %}  Home</title>
+    {% endblock %}
+</head>
+<body align="center">
+<header>
+<b>
+ <h1> vaishnavi chitloor venkatesh </h1>
+        <h1> 1001724384 </h1>
+</b>
+</header>
+
+
+<p>
+{% block content %}
+
+{% for city in ci %}
+ {{ city }}
+
+<br/>
+{% endfor %}
+<br/>
+<!--<br/>-->
+<!--The states with population between the 10 to 50 million are below-->
+<!--{% for StateName in ci1 %}-->
+<!--{{StateName}}-->
+<!--<br/>-->
+<!--{% endfor %}-->
+
+<!--{% endblock %}-->
+
+
+
+<!--<p>-->
+<!-- <form action="/multiplerun" method="get">-->
+<!--	<input type="submit" value="scattered chart"><br/><br/>-->
+<!--</form>-->
+<!--</p>-->
+<!--<p>-->
+<!-- <form action="/pie" method="get">-->
+<!--	<input type="submit" value="pie chart"><br/><br/>-->
+<!--</form>-->
+<!--</p>-->
+<!--<p>-->
+<!-- <form action="/bar" method="get">-->
+<!--	<input type="submit" value="bar chart"><br/><br/>-->
+<!--</form>-->
+<!--</p>-->
+
+</body>
+</html>

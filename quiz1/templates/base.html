@@ -1,0 +1,12 @@
+{% for pic in row %}
+{% if pic == 'No data available' %}
+<p style="font-size:30px; text-align: center;">Bharadwaj Vaduguru</p>
+<p style="font-size: 30px; text-align: center"> MavID:1001761106  </p>
+<h2>no picture available</h2>
+{% else %}
+<tr>
+    <td><img src="static/{{pic[0]}}"></td>
+
+</tr>
+{% endif %}
+{% endfor %}

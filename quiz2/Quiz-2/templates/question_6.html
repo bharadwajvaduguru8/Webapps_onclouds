@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<h1> Quiz 2 </h1>
+<h1>Student ID:1001761106</h1>
+<h1> <strong> Bharadwaj Vaduguru</strong> </h1>
+
+   <body>
+
+      <table border = 1>
+
+         {% for ro in row %}
+         <tr>
+             {% for r in ro %}
+                <td>{{r[0]}}</td>
+             {% endfor %}   
+         </tr>
+         {% endfor %}
+
+      </table>
+
+    <br>
+
+    <p>The time and location of MAX magnitude earthquake in the given ranges</p>
+
+      <table border = 1>
+        {% for TaL in TandL %}
+        <tr>
+            {% for t in TaL %}
+               <td>{{t[0]}}</td>
+               <td>{{t[1]}}</td>
+               <td>{{t[2]}}</td>
+            {% endfor %}   
+        </tr>
+        {% endfor %}
+      </table>
+
+      <br>
+     
+   </body>
+</html>

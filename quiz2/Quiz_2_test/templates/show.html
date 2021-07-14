@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<h1> Quiz 2 </h1>
+<h1> <i>Student ID:1001773073 </i> </h1>
+<h1> <strong> Aravind Muthuluru</strong> </h1>
+
+   <body>
+        <h3>The total number of quakes in the given region: {{row[0][0]}}</h3>
+        <h3>The max magnitude quake is</h3>
+        <table border = 1>
+        {% for m in Max %}
+         <tr>
+             {% for r in m %}
+                <td>{{r}}</td>
+             {% endfor %}   
+         </tr>
+         {% endfor %}  
+        </table>
+        <h3>The minimum magnitude quake is</h3>
+        <table border = 1>
+        {% for w in min %}
+         <tr>
+             {% for r in w %}
+                <td>{{r}}</td>
+             {% endfor %}   
+         </tr>
+         {% endfor %}  
+        </table>
+
+
+    <br>
+
+    </body>
+
+ </html>

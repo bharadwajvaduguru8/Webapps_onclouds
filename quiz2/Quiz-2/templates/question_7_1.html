@@ -1,0 +1,47 @@
+<h1>--MAV ID: 1001761106--</h1>
+<h1>Bharadwaj Vaduguru</h1> <br><br>
+<h1>total values:{{rows[0][0]}}</h1>
+<!-- <h1>The following values of lattitude and longitude lies in between the given values</h1> -->
+<p></p>
+
+{% block app_content %}
+<h3>Highest values as follows</h3>
+<p></p>
+<p></p>
+<table border="1">
+<tr>
+<th>Location</th>
+<th>lattitude</th>
+<th>longitude</th>
+<th>magnitude</th>
+</tr>
+{% for row in rows1 %}
+        <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        </tr>
+         {% endfor %}
+    </table>
+
+<br></br>
+<p></p>
+<h4>The lowest values is displayed below:</h4>
+<table border="1">
+    <tr>
+    <th>Location</th>
+    <th>lattitude</th>
+    <th>longitude</th>
+    <th>magnitude</th>
+    </tr>
+    {% for row in rows2 %}
+            <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            </tr>
+             {% endfor %}
+        </table>
+{% endblock %}

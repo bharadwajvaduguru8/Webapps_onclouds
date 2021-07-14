@@ -1,0 +1,44 @@
+I have attached the code developed for assignment 1, a database is created in sqlite with name dba.db
+
+import os
+import shutil
+import csv
+import sys
+from flask import Flask,render_template, url_for, flash, redirect, request
+
+app = Flask(__name__)
+bootstrap = Bootstrap(app)
+app.config['SECRET_KEY'] = 'blah blah blah blah'
+port = int(os.getenv("PORT", 3000))
+@app.route('/names',methods=['POST'])
+def names():
+	name_result1 = request.form['search_name1']
+	conn = sqlite3.connect('dba.db')
+	cur = conn.cursor()
+	cur.execute('select Picture from salary where Picture= ?',(name_result1,))
+	rows = cur.fetchall()
+
+	if(rows[0][0]==None):
+		rows=["No data available"]
+	return render_template('base.html',row=rows)
+
+@app.route('/pictures',methods=['POST'])
+def pictures():
+    num1=request.form['num1']
+    conn = sqlite3.connect('dba.db')
+    cur = conn.cursor()
+    sql="select * from food where Price less than '"+num1"'"
+    cur.execute(sql)
+    result = cur.fetchall()
+    conn.commit()
+    print (repr(result))
+    return render_template('pictures.html',result =result)
+@app.route('/addpictures',methods=['POST'])
+def addpictures():
+    num1=request.form['num1']
+    conn = sqlite3.connect('dba.db')
+    cur = conn.cursor()
+    cur.execute('update names set Picture= ? where Name= ?',(nameUp,roomUp))
+
+if __name__ == '__main__':
+	app.run(host='0.0.0.0', port=port)

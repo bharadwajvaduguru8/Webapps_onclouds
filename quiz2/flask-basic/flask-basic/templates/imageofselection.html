@@ -1,0 +1,10 @@
+{% for item in row %}
+{% if item == 'No data available' %}
+<h2>no picture available</h2>
+{% else %}
+<tr>
+    <td><img src="static/{{item[0]}}"></td>
+
+</tr>
+{% endif %}
+{% endfor %}

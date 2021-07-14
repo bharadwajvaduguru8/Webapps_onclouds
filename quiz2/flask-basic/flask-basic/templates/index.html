@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{% if name %}
+Thanks for submitting your name, {{ name }}!
+{% endif %}
+{% for row in rows %}
+         <tr>
+            <td>{{row[0]}}</td> 
+            <!-- <td>{{row['Keywords']}}</td> -->
+         </tr>
+{% endfor %}
+{{ wtf.quick_form(form) }}
+{% endblock %}

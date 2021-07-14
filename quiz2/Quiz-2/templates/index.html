@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+<h1>1001747270</h1>
+<h1>Sai Sri Harsha Panchumarthy</h1>
+</head>
+<body>
+
+    <form action="/retrieve" method="POST">
+        Latitude 1:<input type="text" name="lat1"></input>
+        Longitude 1:<input type="text" name="lon1"></input>
+        Latitude 2:<input type="text" name="lat2"></input>
+        Longitude 2:<input type="text" name="lon2"></input>
+        M Value: <input type="text" name="mval"></input>
+        <button>GET DATA</button>
+    </form>
+    
+    <p>{{dat1}}&ensp;{{pl1}}&ensp;{{lat1}}&ensp;{{lon1}}&ensp;{{id1}}</p><br>
+    <p>{{dat1}}&ensp;{{pl1}}&ensp;{{lat2}}&ensp;{{lon2}}&ensp;{{id2}}</p>
+
+    <label>{{count}}</label>
+    <table>
+        {%for i in quakes%}
+        <tr>
+            {%for j in i%}
+            <td>{{j}}</td>
+            {%endfor%}
+        </tr>
+        {%endfor%}
+        {%for i in min%}
+        <tr>
+            {%for j in i%}
+            <td>{{j}}</td>
+            {%endfor%}
+        </tr>
+        {% endfor %}
+        {%for i in max%}
+        <tr>
+            {%for j in i%}
+            <td>{{j}}</td>
+            {%endfor%}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

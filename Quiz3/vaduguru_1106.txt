@@ -1,0 +1,130 @@
+
+Name: Bharadwaj vaduguru
+Last 4 digits ID: 1106
+
+CSE 6331, Cloud Computing					
+
+Quiz Q3, 1.00, Summer 2020   (c) DL, UTA, 2020
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     ANY VIOLATIONS to scholastic honesty, which include working with others during this quiz, communicating with others during
+     this quiz, giving anyone or recieving from anyone any information during this quiz or for the next 6 hours after completion
+     of this quiz is a honors violation and will result in a -100 points being assessed for this quiz and being reported. 
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here: V
+     _________________
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4a. Using the cloud services provider, all functionality possible should be implemented on that provider.
+     (Of course, displaying web pages through a browser and the user interface is "local")
+
+ 4b. Upload all data files (*csv, not this quiz) to cloud service. 
+  
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (text only) on Canvas.
+
+  5. Show a web page and interface (which resides on the cloud provider) with your name,
+     and below that, Student ID at the top of every web page dispayed 
+     (for this quiz). 
+     Please use a large font.
+    
+     The cloud service providers are IBM Cloud (BlueMix), Microsoft Azure, Amazon AWS. You may use any you wish.
+
+    Import the datasets into a Relational Data Base (SQL), if you have already done this, (briefly) explain/describe
+    how you did this. Please note that for some parts of the following you will need to create indexes (keys)
+    appropriately.
+
+  6. Allow a user, through a web form, to give a mag range (for example 2 to 3.1), and show us the matching result tuples
+     for that request. (Show lat, long, place, mag, id)
+     Show us the time taken to perform that operation.
+
+table_with_data=connec.cursor()
+  magup=request.form['magup']
+  magdown=request.form['magdown']
+  time1=time.time()
+#table_with_data.execute("select sp.Entity,sp.Code,sp.Year,sp.Prevalence,pc.Cost from sp,pc where ((sp.Code=?) or (sp.Entity=?)) order by sp.Year ",(input1,input1,))
+  table_with_data.execute("select latitude,longitude,mag,id from q where (mag>?) and (mag<?) ",(magdown,magup,))
+  attributes = table_with_data.fetchall() 
+  #print("hello")
+  time2=time.time()
+  time_c=time2-time1 
+
+  7. Allow a user to give a mag range (for example 2 to 4), and a value D, and you will generate 
+     a random select within that mag range plus or minus D (that is if you generate a mag value of 3.2, and D equals 0.1,
+     select all quakes with mag between 3.2-0.1 up to 3.2+0.1), show us the result, as in the previous question.
+     Show us the time taken to perform that operation.
+
+
+magup=request.form['magup']
+  magdown=request.form['magdown']
+  dvalue=request.form['dvalue']
+  time1=time.time()
+  a=round(random.uniform(magdown, magup), 1)
+  up_value=a+dvalue
+  down_value=a-dvalue
+  table_with_data.execute("select latitude,longitude,mag,id from q where (mag>?) and (mag<?) ",(down_value,up_value,))
+  attributes = table_with_data.fetchall() 
+  #print("hello")
+  time2=time.time()
+  time_c=time2-time1 
+     
+  8. Modify part 7, to allow a value N (up to 1000), and repeat the selections N times.
+     Show time taken for each, and for all operations.
+
+magup=request.form['magup']
+  magdown=request.form['magdown']
+  dvalue=request.form['dvalue']
+  input1=request.form['numberof']
+  time1=time.time()
+  magu=int(magup)
+  magd=int(magdown)
+  dval=float(dvalue)
+#table_with_data.execute("s
+  for i in range(1,int(input1)+1,1):
+    a=float(round(random.uniform(magd, magu), 1))
+    up_value=a+dval
+    down_value=a-dval
+    table_with_data=connec.cursor()
+    table_with_data.execute("select latitude,longitude,mag,id from q where (mag>?) and (mag<?) ",(down_value,up_value,))
+    attributes = table_with_data.fetchall() 
+  #print("hello")
+  time2=time.time()
+  time_c=time2-time1 
+
+  9. Repeat 8. using an in-memory caching mechanism (NOT an in-memory database) repeat the previous step, then show us.
+
+  10. Show us, in a link, the application running and we will try it out. Only for parts 6, 7, 8, 9
+
+  11. When complete, return (send) this quiz
+      If you finish early, send this immediately, otherwise send between
+      the end of class and no more than 1 minute after that.
+

@@ -1,0 +1,119 @@
+
+Name:Bharadwaj Vaduguru
+Last 4 digits ID:1106
+
+CSE 6331, Cloud Computing					
+
+Quiz Q2, 1.00, Summer 2020   (c) DL, UTA, 2020
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     ANY VIOLATIONS to scholastic honesty, which include working with others during this quiz, communicating with others during
+     this quiz, giving anyone or recieving from anyone any information during this quiz or for the next 6 hours after completion
+     of this quiz is a honors violation and will result in a -100 points being assessed for this quiz and being reported. 
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:V
+     _________________
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4a. Using the cloud services provider, all functionality possible should be implemented on that provider.
+     (Of course, displaying web pages through a browser and the user interface is "local")
+
+ 4b. Upload all data files (*jpg and *csv, not this quiz) to cloud service. 
+  
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (text only) on Canvas.
+
+  5. Show a web page and interface (which resides on the cloud provider) with your name,
+     and below that, Student ID at the top of every web page dispayed 
+     (for this quiz). 
+     Please use a large font.
+    
+     The cloud service provider is either IBM Cloud (BlueMix) or Microsoft Azure.
+
+     On that same page, allow a user to give a net value (two letters, such as "ak"), then please show 
+     the total number of earthquakes ("quakes") with that net value, and give (location and id) the ones 
+     with the largest "magNst" and the smallest "magNst.  
+
+	connection = sqlite3.connect('data_earth_quakes.db')
+	table = connection.cursor()
+	name = request.form['given_name']
+	table.execute(("SELECT count(*) from q where (net=?)"),(name,))
+	rows = table.fetchall()
+	data = connection.cursor()
+	data.execute(("SELECT MAX(magNst) WHERE (net=?)"),(name,))
+	data= table.fetchall()
+
+  6. (Web page) Allow a user to give two location (pair) values (lat and long for two different locations) 
+     and a value M, (those two locations create a boundary, a box) then: display the total number of quakes 
+     within that (bounding) box and after that give the largest and smallest mag, less than the value M, 
+     and location (place, lat, long) 
+
+if form.validate_on_submit():
+		lattitude_first=form.lattitude_first.data
+		lattitude_second=form.lattitude_second.data
+		longitude_first=form.longitude_first.data
+ 		longitude_second=form.longitude_second.data
+
+ 	connection = sqlite3.connect('data_earth_quakes.db')
+ 	table_with_data = connection.cursor()
+ 	table_with_data.execute(("SELECT *FROM q WHERE (latitude BETWEEN ? AND ?) AND (longitude BETWEEN ? AND ?)"),(lattitude_first,lattitude_second,longitude_first,longitude_second))
+ 	attributes = table_with_data.fetchall()
+		
+  7. (Web page), Allow a user to give an id (such "ak0209dm1jfm") -or- a part of a location name 
+     (for example "Yellowstone" or "Alaska") (that is a user can either enter an id or a location name, 
+     the user can choose) and a distance (for example 220 km), and show the largest and smallest magnitude 
+     quake (if they exist), within that distance.
+     Please display the lat, long, mag, place, depth and date.
+     Then allow the user to change the location name.
+
+  8. (Web page), Allow a user to give a part of a location name ("Alaska"), and magNst range (for example 3 to 42),
+     and display all quakes that "match", then allow a user to change the location name or magNst values, for any matching
+     quakes.
+connection = sqlite3.connect('data_earth_quakes.db')
+	a = request.form['location']
+	b = request.form['magnup']
+	c2 = request.form['magnlo']
+
+
+	tab = connection.cursor()
+	tab.execute("SELECT *  from q Where place = ? AND (mag < ?) and (mag> ?)",(a,b,c2,))	
+	row = tab.fetchall()	#rows1 has the maximum
+	
+	return render_template('question9_new.html',title='',rows=roww)
+
+
+  9. Show us, in a link, the application running and we will try it out. Only for parts 5, 6, 7, 8
+
+  10. When complete, return (send) this quiz
+      If you finish early, send this immediately, otherwise send between
+      the end of class and no more than 1 minute after that.
+
